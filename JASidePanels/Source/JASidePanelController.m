@@ -1028,6 +1028,9 @@ static char ja_kvoContext;
         _centerPanelHidden = NO;
         [self _unhideCenterPanel];
     }
+    if ([self.delegate respondsToSelector:@selector(showCenterPanelInJASidePanelController:)]) {
+        [self.delegate showCenterPanelInJASidePanelController:self];
+    }
     [self _showCenterPanel:animated bounce:NO];
 }
 
