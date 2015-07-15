@@ -1024,6 +1024,9 @@ static char ja_kvoContext;
 
 - (void)toggleLeftPanel:(__unused id)sender {
     if (self.state == JASidePanelLeftVisible) {
+        if ([self.delegate respondsToSelector:@selector(showCenterPanelInJASidePanelController:)]) {
+          [self.delegate showCenterPanelInJASidePanelController:self];
+        }
         [self _showCenterPanel:YES bounce:NO];
     } else if (self.state == JASidePanelCenterVisible) {
         if ([self.delegate respondsToSelector:@selector(showLeftSidePanelInJASidePanelController:)]) {

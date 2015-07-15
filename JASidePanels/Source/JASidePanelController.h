@@ -181,6 +181,7 @@ typedef enum _JASidePanelState {
 @protocol JASidePanelControlDelegate <NSObject>
 
 @optional
+- (void) showCenterPanelInJASidePanelController:(JASidePanelController *)controller;
 - (void) showLeftSidePanelInJASidePanelController:(JASidePanelController *)controller;
 - (void) showRightSidePanelInJASidePanelController:(JASidePanelController *)controller;
 - (void) panBegan:(JASidePanelController *)controller WithTranslaton:(CGPoint)translation;
