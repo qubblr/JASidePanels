@@ -904,9 +904,13 @@ static char ja_kvoContext;
     
     if (animated) {
         [self _animateCenterPanel:shouldBounce completion:^(__unused BOOL finished) {
+            if ([self.delegate respondsToSelector:@selector(showCenterPanelInJASidePanelController:)]) {
+                [self.delegate showCenterPanelInJASidePanelController:self];
+            }
             self.leftPanelContainer.hidden = YES;
             self.rightPanelContainer.hidden = YES;
             [self _unloadPanels];
+          
         }];
     } else {
         self.centerPanelContainer.frame = _centerPanelRestingFrame;	
@@ -914,6 +918,11 @@ static char ja_kvoContext;
         if (self.style == JASidePanelMultipleActive || self.pushesSidePanels) {
             [self _layoutSideContainers:NO duration:0.0f];
         }
+      
+        if ([self.delegate respondsToSelector:@selector(showCenterPanelInJASidePanelController:)]) {
+            [self.delegate showCenterPanelInJASidePanelController:self];
+        }
+      
         self.leftPanelContainer.hidden = YES;
         self.rightPanelContainer.hidden = YES;
         [self _unloadPanels];
